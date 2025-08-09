@@ -1,12 +1,34 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import React from 'react';
+
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-  const [tableNumber, setTableNumber] = useState('');
-  const [specialRequests, setSpecialRequests] = useState('');
+  // Initialize state from localStorage or default to empty
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+  const [tableNumber, setTableNumber] = useState(() => {
+    return localStorage.getItem('tableNumber') || '';
+  });
+  const [specialRequests, setSpecialRequests] = useState(() => {
+    return localStorage.getItem('specialRequests') || '';
+  });
+
+  // Save to localStorage whenever cart, tableNumber, or specialRequests change
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem('tableNumber', tableNumber);
+  }, [tableNumber]);
+
+  useEffect(() => {
+    localStorage.setItem('specialRequests', specialRequests);
+  }, [specialRequests]);
 
   const addToCart = (item) => {
     setCart((prevCart) => {
@@ -42,6 +64,10 @@ export const CartProvider = ({ children }) => {
     setCart([]);
     setTableNumber('');
     setSpecialRequests('');
+    // Clear localStorage
+    localStorage.removeItem('cart');
+    localStorage.removeItem('tableNumber');
+    localStorage.removeItem('specialRequests');
   };
 
   return (
@@ -55,7 +81,7 @@ export const CartProvider = ({ children }) => {
         setTableNumber,
         specialRequests,
         setSpecialRequests,
-        clearCart, // Add clearCart to context
+        clearCart,
       }}
     >
       {children}
