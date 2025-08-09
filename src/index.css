@@ -1,0 +1,81 @@
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+/* Button pulse effect */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+.hover-pulse:hover {
+  animation: pulse 1.5s infinite;
+}
+
+/* Image hover zoom */
+.hover-zoom {
+  transition: transform 0.5s;
+}
+.hover-zoom:hover {
+  transform: scale(1.03);
+}
+/* ======== ADD THESE STYLES ======== */
+/* Image hover zoom */
+.hover-zoom {
+  transition: transform 0.5s ease;
+}
+.hover-zoom:hover {
+  transform: scale(1.03);
+}
+
+/* Button pulse */
+.hover-pulse:hover {
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+/* ======== END OF ADDED STYLES ======== */
+/* Custom slider dots */
+.special-dishes-slider .slick-dots li button:before {
+  color: #f97316; /* Orange-500 */
+  opacity: 0.5;
+  font-size: 10px;
+}
+.special-dishes-slider .slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #f97316;
+}
+
+/* Slider arrows */
+.special-dishes-slider .slick-prev:before,
+.special-dishes-slider .slick-next:before {
+  color: #f97316;
+  font-size: 24px;
+}
+
+/* Responsive image container */
+.aspect-ratio-keeper {
+  position: relative;
+  padding-bottom: 66.67%; /* 800/1200 = 2/3 ratio */
+  overflow: hidden;
+}
+.aspect-ratio-keeper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* index.css */
+html {
+  scroll-behavior: smooth;
+}
