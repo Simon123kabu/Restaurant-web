@@ -2,11 +2,13 @@ import { Link, useLocation } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 import React from 'react';
+import { useCart } from '../context/CartContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const [cartItems] = useState(3); // Replace with your cart state
+  const { cart } = useCart();
+  const cartItemCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
 
   const isActive = (path) => location.pathname === path;
 
@@ -38,9 +40,9 @@ const Navbar = () => {
               className="relative text-gray-700 hover:text-orange-600"
             >
               <FaShoppingCart size={20} />
-              {cartItems > 0 && (
+              {cartItemCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-orange-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  {cartItems}
+                  {cartItemCount}
                 </span>
               )}
             </Link>
@@ -81,9 +83,9 @@ const Navbar = () => {
                 className="flex items-center text-gray-700 font-medium py-2"
               >
                 Cart
-                {cartItems > 0 && (
+                {cartItemCount > 0 && (
                   <span className="ml-2 bg-orange-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    {cartItems}
+                    {cartItemCount}
                   </span>
                 )}
               </Link>

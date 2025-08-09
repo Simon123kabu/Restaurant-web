@@ -2,23 +2,24 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { FaTrash, FaPlus, FaMinus, FaUtensils, FaArrowLeft } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { useCart } from '../context/CartContext';
 
 const Cart = () => {
-  // Sample cart data (in a real app, this would come from context/state)
-  const [cart, setCart] = useState([
-    { id: 1, name: "Beef Wellington", price: 28.99, quantity: 1 },
-    { id: 2, name: "Jollof Rice", price: 15.99, quantity: 2 },
-    { id: 3, name: "Tropical Mocktail", price: 6.99, quantity: 1 }
-  ]);
+  const {
+    cart,
+    updateQuantity,
+    removeItem,
+    tableNumber,
+    setTableNumber,
+    specialRequests,
+    setSpecialRequests
+  } = useCart();
 
-  const [tableNumber, setTableNumber] = useState('');
-  const [specialRequests, setSpecialRequests] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   // Calculate totals
-  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const subtotal = cart.reduce((sum, item) => sum + (parseFloat(item.price.replace('$', '')) * item.quantity), 0);
   const tax = subtotal * 0.08; // 8% tax
   const total = subtotal + tax;
 
@@ -48,20 +49,6 @@ const Cart = () => {
         damping: 10
       }
     }
-  };
-
-  // Handle quantity changes
-  const updateQuantity = (id, change) => {
-    setCart(cart.map(item => 
-      item.id === id 
-        ? { ...item, quantity: Math.max(1, item.quantity + change) } 
-        : item
-    ));
-  };
-
-  // Remove item from cart
-  const removeItem = (id) => {
-    setCart(cart.filter(item => item.id !== id));
   };
 
   // Submit order
@@ -177,7 +164,7 @@ const Cart = () => {
                     <div className="p-4 flex justify-between items-center">
                       <div className="flex-1">
                         <h3 className="font-bold text-gray-800">{item.name}</h3>
-                        <p className="text-orange-600 font-medium">${item.price.toFixed(2)}</p>
+                        <p className="text-orange-600 font-medium">${parseFloat(item.price.replace('$', '')).toFixed(2)}</p>
                       </div>
                       
                       <div className="flex items-center space-x-3">

@@ -6,6 +6,10 @@ import dish1 from '../assets/dish1.jpg'; // Add your images
 import dish2 from '../assets/dish2.jpg';
 import dish3 from '../assets/dish3.jpg';
 import dish4 from '../assets/dish4.jpg'; 
+import dish5 from '../assets/dish5.jpg';
+import dish6 from '../assets/dish6.jpg';
+import dish7 from '../assets/dish7.jpg';
+import dish8 from '../assets/dish8.jpg';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -97,22 +101,22 @@ const Home = () => {
         >
           {[
             {
-              img: dish1,
+              img: dish5,
               title: "Beef Wellington",
               desc: "Premium cut with mushroom duxelles"
             },
             {
-              img: dish2,
+              img: dish6,
               title: "Jollof Rice",
               desc: "West African signature dish"
             },
             {
-              img: dish3,
+              img: dish7,
               title: "Truffle Pasta",
               desc: "Handmade pasta with black truffle"
             },
             {
-              img: dish4,
+              img: dish8,
               title: "Tropical Mocktail",
               desc: "Fresh mango & passionfruit blend"
             }
@@ -218,9 +222,9 @@ const Home = () => {
       <section className="py-20 text-center bg-gradient-to-r from-orange-400 to-orange-600 text-white">
         <h2 className="text-4xl font-bold mb-6">Ready for a Culinary Journey?</h2>
         <p className="text-xl mb-8 max-w-2xl mx-auto">Book your table now and experience gastronomic excellence</p>
-        <button className="bg-white text-orange-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition shadow-lg">
+        <Link to="/reservation" className="bg-white text-orange-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition shadow-lg">
           Reserve Now
-        </button>
+        </Link>
       </section>
     </div>
   );

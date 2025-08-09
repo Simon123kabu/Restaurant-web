@@ -4,6 +4,7 @@ import './App.css'
 import React from 'react';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { CartProvider } from './context/CartContext';
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
@@ -11,6 +12,7 @@ import Cart from "./pages/Cart";
 function App() {
 
   return (
+    <CartProvider>
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
@@ -24,6 +26,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </CartProvider>
   )
 }
 

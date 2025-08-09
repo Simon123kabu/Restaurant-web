@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { FaCartPlus, FaUtensils, FaGlassMartiniAlt, FaIceCream, FaBreadSlice, FaLeaf, FaFish } from 'react-icons/fa';
+import { useCart } from '../context/CartContext';
 
 const Menu = () => {
-  // State for active category and cart
   const [activeCategory, setActiveCategory] = useState('continental');
-  const [cart, setCart] = useState([]);
+  const { cart, addToCart } = useCart();
+  const [selectedItemId, setSelectedItemId] = useState(null);
 
   // Menu data with 7 categories
   const menuCategories = {
@@ -123,12 +124,6 @@ const Menu = () => {
     }
   };
 
-  // Add to cart function
-  const addToCart = (item) => {
-    setCart([...cart, item]);
-    // In a real app, you'd use Redux/Context for cart management
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-6xl mx-auto">
@@ -157,11 +152,20 @@ const Menu = () => {
                 <p className="text-gray-600 text-sm mt-1">{item.description}</p>
                 <div className="flex justify-between items-center mt-3">
                   <span className="font-bold text-orange-500">{item.price}</span>
-                  <button 
-                    onClick={() => addToCart(item)}
-                    className="flex items-center bg-orange-500 hover:bg-orange-600 text-white px-3 py-1 rounded-full text-sm transition"
+                  <button
+                    onClick={() => {
+                      addToCart(item);
+                      setSelectedItemId(item.id);
+                      setTimeout(() => setSelectedItemId(null), 500);
+                    }}
+                    className={`flex items-center px-3 py-1 rounded-full text-sm transition ${
+                      selectedItemId === item.id
+                        ? 'bg-green-500 text-white'
+                        : 'bg-orange-500 hover:bg-orange-600 text-white'
+                    }`}
                   >
-                    <FaCartPlus className="mr-1" /> Add
+                    <FaCartPlus className="mr-1" />
+                    {selectedItemId === item.id ? 'Added!' : 'Add'}
                   </button>
                 </div>
               </div>
