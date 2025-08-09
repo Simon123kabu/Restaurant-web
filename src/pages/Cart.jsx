@@ -4,6 +4,7 @@ import { FaTrash, FaPlus, FaMinus, FaUtensils, FaArrowLeft } from 'react-icons/f
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 
+
 const Cart = () => {
   const {
     cart,
@@ -12,7 +13,8 @@ const Cart = () => {
     tableNumber,
     setTableNumber,
     specialRequests,
-    setSpecialRequests
+    setSpecialRequests,
+    clearCart, // Add clearCart from context
   } = useCart();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -64,11 +66,11 @@ const Cart = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
-      // In a real app, you would clear the cart here
+      clearCart(); // Clear cart, table number, and special requests
     }, 1500);
   };
 
-  // Reset after successful submission
+  // Reset submitSuccess after 3 seconds
   useEffect(() => {
     if (submitSuccess) {
       const timer = setTimeout(() => {
