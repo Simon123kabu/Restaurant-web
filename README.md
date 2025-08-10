@@ -22,7 +22,7 @@ Build Tool: Vite (or Create React App — update based on what you used)
 
 📂 Project Setup
 Clone the repository:
-git clone https://github.com/yourusername/restaurant-website.git
+git clone https://github.com/Simon123kabu/restaurant-website.git
 cd restaurant-website
 
 Install dependencies:
