@@ -1,30 +1,40 @@
-Gourmet Haven
+# Gourmet Restaurant Website
 
-A modern, responsive restaurant website built with React JSX and Tailwind CSS.
-It’s designed to showcase a restaurant’s brand, menu, and services with a sleek, user-friendly interface.
+A modern restaurant website with menu browsing, cart functionality, and order management built with React, Tailwind CSS, and React Router.
 
-✨ Features
-Fully Responsive – Works seamlessly on desktop, tablet, and mobile.
+## Features
 
-Modern UI/UX – Clean, minimal design powered by Tailwind CSS.
+- 🍽️ Interactive menu with category tabs
+- 🛒 Real-time cart management
+- 📱 Fully responsive design
+- ✨ Smooth animations with Framer Motion
+- 📝 Table number and special requests
+- 🔄 Shared state between components
 
-Menu Display – Beautiful menu section with categories and pricing.
+## Technologies Used
 
-About & Contact Pages – Provide essential restaurant details and contact options.
+- React 
+- Tailwind CSS
+- React Icons
+- Framer Motion (for animations)
+- React Router (for navigation)
+- Vite ( Create React App )
 
-Smooth Navigation – Fast and interactive browsing with React Router (if used).
+## Setup Instructions
 
-🛠 Tech Stack
-Frontend: React (JSX)
+### Prerequisites
 
-Styling: Tailwind CSS
+- Node.js (v16 or higher)
+- npm (v8 or higher) or yarn
 
-Build Tool: Vite (or Create React App — update based on what you used)
+### Installation
+
+1. Clone the repository:
+
+   git clone https://github.com/Simon123kabu/restaurant-website.git
+   cd restaurant-website
 
 📂 Project Setup
-Clone the repository:
-git clone https://github.com/Simon123kabu/restaurant-website.git
-cd restaurant-website
 
 Install dependencies:
 npm install
