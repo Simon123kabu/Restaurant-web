@@ -1,4 +1,4 @@
-Restaurant Website
+Gourmet Haven
 A modern, responsive restaurant website built with React JSX and Tailwind CSS.
 It’s designed to showcase a restaurant’s brand, menu, and services with a sleek, user-friendly interface.
 
